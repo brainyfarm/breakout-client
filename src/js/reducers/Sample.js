@@ -1,7 +1,10 @@
 import { SET_SAMPLE } from '../actions/Types';
 
 const initialState = {
-  sample: []
+  sample: [],
+  media: {},
+  allMedia: [],
+  
 }
 
 export default (state = initialState, action = {}) => {

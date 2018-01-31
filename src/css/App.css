@@ -1,28 +1,155 @@
-.App {
-  text-align: center;
+/* https://coolors.co/011627-fdfffc-2ec4b6-e71d36-ff9f1c */
+/* this file contains styles for the navbar component */
+
+html, body {
+  background: #011627;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/* override bootstrap button styles */
+.btn {
+  padding: .6em 1em;
+  border: none;
+  border-radius: 0.1rem;
+  color: #FDFFFC;
+  background: transparent;
+  text-transform: uppercase;
+  outline-color: transparent;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.btn:hover {
+  background: transparent;
 }
 
-.App-title {
-  font-size: 1.5em;
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none;
 }
 
-.App-intro {
-  font-size: large;
+.btn-primary {
+  border: 2px solid #E71D36;
+  background-color: #E71D36;
+  color: #FDFFFC;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.btn-primary:hover {
+  background: transparent;
+  border-color: #FDFFFC;
+  color: #FDFFFC;
+  transition: background-color 0.5s;
 }
+
+.btn-secondary {
+  border: 2px solid #2EC4B6;
+  background-color: #2EC4B6;
+  color: #FDFFFC;
+}
+
+.btn-secondary:hover {
+  background: transparent;
+  border-color: #FDFFFC;
+  color: #FDFFFC;
+  transition: background-color 0.5s;
+}
+
+.btn-tertiary {
+  background: #011627;
+}
+
+.btn-tertiary:hover {
+  background: #2EC4B6
+}
+
+.videoContainer {
+  width: 80vw;
+  height: 80vh;
+}
+
+iframe {
+  width: 90%;
+  height: 90%; 
+}
+
+/* navbar styles */
+.navbar-brand, .nav-item.nav-link {
+  color: #2EC4B6 !important;
+}
+
+.navbar-brand:hover, .nav-item.nav-link:hover {
+  color: #E71D36 !important;
+}
+
+.navbar-toggler {
+  background: #2EC4B6 !important;
+  border-color: unset;
+  outline: none !important;
+}
+
+/* styles here are used for both sign up and sign in page */
+
+.auth-box {
+  background-color: #FDFFFC;
+  height: 25rem;
+  border-radius: 8px;
+  margin-top: 10rem;
+  box-shadow: 1px 1px 6px #E9ECEF;
+}
+
+@media (min-width: 768px) {
+  .auth-box {
+    margin: 0 auto;
+    margin-top: 9rem;
+  }
+
+  /* sign up page style */
+  .auth-box.sign-up {
+    margin-top: 6rem;
+  }
+}
+
+.auth-box h3 {
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 1.1;
+  color: #011627;
+}
+
+input[type=text], input[type=email], input[type=password] {
+  font-weight: 200 !important;
+}
+
+.auth-box-footer {
+  width: 100%;
+  background: whitesmoke;
+  height: 4rem;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #ececec;
+  font-weight: 200;
+  text-decoration: none;
+  color: #011627;
+}
+
+.auth-box-footer:hover {
+  text-decoration: none;
+  color: #011627;  
+}
+
+.auth-box-footer span {
+  text-decoration: none;
+  color: #E71D36;
+}
+
+
+/* sign up style */
+.auth-box.sign-up {
+  height: 31rem;
+}
+
+
