@@ -92,3 +92,34 @@ iframe {
 .modal-header h5 {
   font-weight: 200;
 }
+
+
+.profile h3 {
+  color: #FDFFFC;
+  font-weight: 200;
+}
+
+.profile-box {
+  background: #FDFFFC;
+  border-radius: 8px;
+  padding: 2rem;  
+}
+
+.profile-box p {
+  font-weight: 200;
+}
+
+.media-detail h5 {
+  font-weight: 200;
+}
+
+.media-detail ul {
+  list-style-type: none;
+  text-align: left;
+  padding-left: 0;
+}
+
+.media-detail ul li a {
+  text-decoration: none;
+  color: #011627;
+}

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import { isLoggedIn } from '../../helpers/isLoggedIn';
+import { Redirect } from 'react-router-dom';
 
 class Home extends Component {
     render() {
+        if(isLoggedIn()) {
+            return <Redirect to='/medialist' />;
+        }
         return (
             <div className="container text-center">
                 <div className="mx-auto videoContainer">

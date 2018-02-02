@@ -4,11 +4,12 @@ import { Redirect } from 'react-router-dom';
 
 import { addRating, getMedia } from '../../actions/Actions'
 import { isLoggedIn } from '../../helpers/isLoggedIn';
+import { format } from '../../helpers/DateTime';
+
 
 class Media extends Component {
     constructor(props) {
         super(props);
-        console.log(props);        
         this.media_id = props.match.params.media_id;
         this.props.getMedia(this.media_id);
     }
@@ -30,21 +31,36 @@ class Media extends Component {
             )
         }) : null
         return (
-            <div className="container text-center">
+            <div>
 
+                <div className="container text-center">
+
+                { 
+                    mediaData.type == 'youtube'
+                 ?
                 <div className="mx-auto videoContainer media-container">
-                    <iframe width="1920" height="1080" src="https://www.youtube.com/embed/5I1v7aXYitI" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                    <iframe width="1920" height="1080" src={`https://www.youtube.com/embed/${mediaData.link}`} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
                     <div className="position-relative video-author-div">
                         <span> 
-                            <span> { mediaData.title } </span> <br />
-                            <strong> By { mediaData.username } </strong>
+                            <h3 className=""> { mediaData.title } </h3>
+                            <span className="text"> {format(mediaData.created)} by <a href={`../user/${ mediaData.username }`}> { mediaData.username } </a> </span>
                         </span>
                     </div>
                 </div>
-
+                :
+                <div className="mx-auto media-audio-container">
+                <iframe scrolling="no" frameborder="no" src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${mediaData.link}&amp;color=0066cc`}></iframe>
+                    <div className="position-relative audio-author-div">
+                        <span> 
+                            <h3 className="text-white"> { mediaData.title } </h3> <br />
+                            <span className="text-white"> {format(mediaData.created)} by <a href={`../user/${ mediaData.username }`}> { mediaData.username } </a> </span>
+                        </span>
+                    </div>
+                </div>
+                }
                 <div className="container text-center">
                     <div className="review__stars">
-                        <input type="radio" name="rating" onClick={(event) => this.rateMedia(event, 1, ) } id="star-5" required />
+                        <input type="radio" name="rating" onClick={(event) => this.rateMedia(event, 1) } id="star-5" required />
                         <label htmlFor="star-5"></label>
                         <input type="radio" name="rating" onClick={(event) => this.rateMedia(event, 2) } id="star-4" required />
                         <label htmlFor="star-4"></label>
@@ -57,6 +73,7 @@ class Media extends Component {
                     </div>
                 </div>
 
+
                 <div className="review-box col-12 col-md-8 mx-auto position-relative mt-5">
                     <textarea name="" id="video-review" cols="30" rows="10" placeholder="Leave a review"></textarea>
                     <div className="review__section">
@@ -67,12 +84,14 @@ class Media extends Component {
                 </div>
 
                 <div className="review-comments mt-5  col-12 col-md-8 mx-auto position-relative">
+        
                     <h3>Reviews</h3>
+
                     <ul className="comment-list">
-                        { this.props.media.comments ? allComments : null }
+                        { this.props.media.comments && this.props.media.comments.length ? allComments : <h6 className="text-center text-white"> No Reviews Yet </h6>  }
                     </ul>
                 </div>
-
+            </div>
             </div>
         )
     }

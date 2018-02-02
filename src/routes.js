@@ -5,6 +5,7 @@ import Login from './js/components/auth/Login';
 import Signup from './js/components/auth/Signup';
 import MediaList from './js/components/media/MediaList';
 import Media from './js/components/media/Media';
+import Profile from './js/components/user/Profile';
 
 
 
@@ -23,6 +24,7 @@ export default (
 
       <Route exact path="/media/:media_id" component= { Media } />
 
+      <Route exact path="/user/:username" component= { Profile } />
 
       {/* { <Route exact path="/signup" component={ Signup } /> */} */}
 

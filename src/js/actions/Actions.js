@@ -16,6 +16,7 @@ const signup = (requestBody) => (dispatch) => {
   return axios.post(PATH.SIGNUP, requestBody)
     .then((res) => {
       LOCALTOKEN.AddTokenToLocalStorage(res.data.token);
+      AXIOSDEFAULT.setRequestToken(res.data.token)
       return dispatch({ type: TYPE.SET_USER, data: res.data });
     })
 }
@@ -25,17 +26,21 @@ const login = (requestBody) => (dispatch) => {
   .then((res) => {
     console.log(res.data);
     LOCALTOKEN.AddTokenToLocalStorage(res.data.token);
+    AXIOSDEFAULT.setRequestToken(res.data.token)
     return dispatch({ type: TYPE.SET_USER, data: res.data });
   }
 )
   .catch((err) => console.log(err.message))
 }
 
-const addMedia = (requestBody) => (dispatch) => {
-  return axios.post(PATH.MEDIA, requestBody)
+const addMedia = (requestBody) => (dispatch) => {  
+  requestBody.created = Date.now()
+  return axios.post(PATH.MEDIA, requestBody)    
   .then((res) => {
+    window.location.href = `../media/${res.data.data.media_id}`
     return dispatch({ type: TYPE.SET_MEDIA, data: res.data });
   })
+
 }
 
 const getMedia = (mediaId) => (dispatch) => {
@@ -104,5 +109,6 @@ export {
   getMyMedia,
   login,
   signup,
+  getUserProfile,
 }
 

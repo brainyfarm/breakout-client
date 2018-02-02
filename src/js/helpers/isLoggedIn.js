@@ -2,6 +2,8 @@ import jwtDecode from 'jwt-decode';
 
 const isLoggedIn = () => {
     const userToken = localStorage.getItem('token');
+    if(!userToken)
+        return false;
     try {
         const decodedToken = jwtDecode(userToken);
 
