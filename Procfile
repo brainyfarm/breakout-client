@@ -1,1 +1,1 @@
-worker: forever start server
+web: node server
