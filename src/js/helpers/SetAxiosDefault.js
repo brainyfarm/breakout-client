@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const setBaseUrl= (token) => {
-    axios.defaults.baseURL = 'break-out-server.herokuapp.com'; 
+export const setBaseUrl= () => {
+    axios.defaults.baseURL = 'http://break-out-server.herokuapp.com'; 
     return true;
 }
 

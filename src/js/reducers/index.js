@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
-import Sample from './Sample';
+import User from './User';
+import { AllMedia, Media } from './Media'
 
 export default combineReducers({
-  Sample
+  AllMedia,
+  User,
+  Media,
 });

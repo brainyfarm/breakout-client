@@ -12,24 +12,23 @@ const getHomeVideo = () => (dispatch) => {
       .catch(error => dispatch(error));
 }
 
-const register = (requestBody) => (dispatch) => {
+const signup = (requestBody) => (dispatch) => {
   return axios.post(PATH.SIGNUP, requestBody)
     .then((res) => {
       LOCALTOKEN.AddTokenToLocalStorage(res.data.token);
-      AXIOSDEFAULT.setBaseUrl(res.data.token);
       return dispatch({ type: TYPE.SET_USER, data: res.data });
     })
-    .catch(error => dispatch(error));
 }
 
 const login = (requestBody) => (dispatch) => {
-  return axios.post(PATH.SIGNUP, requestBody)
+  return axios.post(PATH.LOGIN, requestBody)
   .then((res) => {
+    console.log(res.data);
     LOCALTOKEN.AddTokenToLocalStorage(res.data.token);
-    AXIOSDEFAULT.setBaseUrl(res.data.token);
     return dispatch({ type: TYPE.SET_USER, data: res.data });
-  })
-  .catch(error => dispatch(error));
+  }
+)
+  .catch((err) => console.log(err.message))
 }
 
 const addMedia = (requestBody) => (dispatch) => {
@@ -37,25 +36,22 @@ const addMedia = (requestBody) => (dispatch) => {
   .then((res) => {
     return dispatch({ type: TYPE.SET_MEDIA, data: res.data });
   })
-  .catch(error => dispatch(error));
 }
 
 const getMedia = (mediaId) => (dispatch) => {
-  const endPoint = `${PATH.MEDIA}/media/${mediaId}`;
+  const endPoint = `${PATH.MEDIA}/${mediaId}`;
   return axios.get(endPoint)
   .then((res) => {
-    return dispatch({ type: TYPE.SET_MEDIA, data: res.data });
+    return dispatch({ type: TYPE.SET_MEDIA, data: res.data.data });
   })
-  .catch(error => dispatch(error)); 
 }
 
 
-const getAllMedia = () => {
+const getAllMedia = () => (dispatch) => {
   return axios.get(PATH.MEDIA)
   .then((res) => {
-    return dispatch({ type: TYPE.SET_ALL_MEDIA, data: res.data });
+    return dispatch({ type: TYPE.SET_ALL_MEDIA, data: res.data.data });
   })
-  .catch(error => dispatch(error));
 }
 
 const getMyMedia = () => (dispatch) => {
@@ -64,16 +60,14 @@ const getMyMedia = () => (dispatch) => {
   .then((res) => {
     return dispatch({ type: TYPE.SET_ALL_MEDIA, data: res.data });
   })
-  .catch(error => dispatch(error)); 
 }
 
 const getUserProfile = (userId) => (dispatch) => {
-  const endPoint = `${PATH.PROFILE}/${userID}`;
+  const endPoint = `${PATH.PROFILE}/${userId}`;
   return axios.get(endPoint)
   .then((res) => {
     return dispatch({ type: TYPE.SET_CURRENT_PROFILE, data: res.data });
   })
-  .catch(error => dispatch(error)); 
 }
 
 
@@ -83,7 +77,6 @@ const getMyProfile = () => (dispatch) => {
   .then((res) => {
     return dispatch({ type: TYPE.SET_CURRENT_PROFILE, data: res.data });
   })
-  .catch(error => dispatch(error)); 
 }
 
 const addComment = (mediaId, requestBody) => (dispatch) => {
@@ -92,16 +85,14 @@ const addComment = (mediaId, requestBody) => (dispatch) => {
   .then((res) => {
     return dispatch({ type: TYPE.SET_MEDIA, data: res.data });
   })
-  .catch(error => dispatch(error));
 }
 
 const addRating = (mediaId, requestBody) => (dispatch) => {
-  const endPoint = `${PATH.MEDIA}/rate/${mediaId}`;
+  const endPoint = `api/rate/${mediaId}`;
   return axios.post(endPoint, requestBody)
   .then((res) => {
     return dispatch({ type: TYPE.SET_MEDIA, data: res.data });
   })
-  .catch(error => dispatch(error));
 }
 
 export {
@@ -111,5 +102,7 @@ export {
   getAllMedia,
   getMedia,
   getMyMedia,
+  login,
+  signup,
 }
 

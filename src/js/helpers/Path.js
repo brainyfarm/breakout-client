@@ -6,7 +6,7 @@ const SIGNUP = `${ BASE }/user/signup`;
 
 const PROFILE = `${ BASE }/user`;
 
-const MEDIA = `${ BASE }/user/media`;
+const MEDIA = `${ BASE }/media`;
 const COMMENT = `${ BASE }/comment`;
 const RATE = `${ BASE }/rate`;
 

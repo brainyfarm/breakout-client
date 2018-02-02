@@ -4,11 +4,16 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import * as axiosConfig from './js/helpers/SetAxiosDefault'
 
 import registerServiceWorker from './registerServiceWorker';
 import Routes from './routes';
 import rootReducer from './js/reducers/index';
 import './css/App.css';
+
+axiosConfig.setBaseUrl();
+axiosConfig.setFormPostType();
+axiosConfig.setRequestToken(localStorage.getItem('token'));
 
 const store = createStore(
 	rootReducer,
