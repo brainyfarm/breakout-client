@@ -6,6 +6,7 @@ import { getAllMedia, addMedia } from '../../actions/Actions'
 
 import { isLoggedIn, getTokenData } from '../../helpers/isLoggedIn';
 import { format } from '../../helpers/DateTime';
+import { getMediaId } from '../../helpers/GetMediaLinkID';
 import mic_2 from '../../../images/mic_2.png'
 
 class MediaList extends Component {
