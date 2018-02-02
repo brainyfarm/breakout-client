@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "express": "^4.16.2",
+    "forever": "^0.15.3",
     "jwt-decode": "^2.2.0",
     "moment": "^2.20.1",
     "react": "^16.2.0",
