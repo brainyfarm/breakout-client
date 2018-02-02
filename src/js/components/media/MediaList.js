@@ -56,9 +56,9 @@ class MediaList extends Component {
                 <div className="col-sm-6 my-3" key={index}>
                     <div className="card">
                     { media.type === 'youtube' ?
-                            <img class="card-img-top" src={`https://img.youtube.com/vi/${media.link}/0.jpg`} alt="Card image cap" />
+                            <img className="card-img-top" src={`https://img.youtube.com/vi/${media.link}/0.jpg`} />
                         :
-                        <img class="card-img-top" src="https://www.indexventures.com/sites/default/files/styles/large/public/logos/Soundcloud%20copy.png?itok=hATAxsnD" alt="Card image cap" />
+                        <img className="card-img-top" src="https://www.indexventures.com/sites/default/files/styles/large/public/logos/Soundcloud%20copy.png?itok=hATAxsnD" />
                     }
                         <div className="card-body">
                             <h3 className="card-text black-text"> {media.title} </h3>
