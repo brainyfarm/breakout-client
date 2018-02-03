@@ -27,8 +27,7 @@ export default (
 
       <Route exact path="/user/:username" component= { RequireAuth(Profile) } />
 
-
-      {/* { <Route exact path="/signup" component={ Signup } /> */} */}
+      {/* { <Route exact path="/signup" component={ Signup } /> */}
 
     </Switch>
   </App>
