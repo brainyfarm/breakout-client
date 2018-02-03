@@ -6,6 +6,7 @@ import Signup from './js/components/auth/Signup';
 import MediaList from './js/components/media/MediaList';
 import Media from './js/components/media/Media';
 import Profile from './js/components/user/Profile';
+import RequireAuth from './js/helpers/RequireAuth';
 
 
 
@@ -20,11 +21,12 @@ export default (
 
       <Route exact path="/signup" component={ Signup } />
 
-      <Route exact path="/medialist" component= { MediaList } />
+      <Route exact path="/medialist" component= { RequireAuth(MediaList) } />
 
-      <Route exact path="/media/:media_id" component= { Media } />
+      <Route exact path="/media/:media_id" component= { RequireAuth(Media) } />
 
-      <Route exact path="/user/:username" component= { Profile } />
+      <Route exact path="/user/:username" component= { RequireAuth(Profile) } />
+
 
       {/* { <Route exact path="/signup" component={ Signup } /> */} */}
 
