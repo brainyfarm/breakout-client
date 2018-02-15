@@ -19,8 +19,3 @@ export {
     RATE,
     SIGNUP,
 }
-
-
-5/5
-
-4.5
